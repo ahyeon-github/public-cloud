@@ -58,4 +58,3 @@ Query OK, 3 rows affected (0.03 sec)
 <br>
 <br>
 
-## 3.react로 서버에서 데이터를 읽어서 콘솔이나 화면에 출력
