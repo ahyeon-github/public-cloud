@@ -4,9 +4,9 @@
 #### 생성한 데이터베이스에 user 정보를 저장할 수 있는 테이블을 만들고 3개의 샘플 데이터 추가
 
 ```
-mysql -h user-db.c9wu4esi49yw.ap-northeast-2.rds.amazonaws.com -u admin -p
-mysql> create user 'admin'@'user-db.c9wu4esi49yw.ap-northeast-2.rds.amazonaws.com' identified by 'admin1234!';
-mysql> GRANT ALL PRIVILEGES ON `user_db`.* TO 'admin'@'user-db.c9wu4esi49yw.ap-northeast-2.rds.amazonaws.com';
+mysql -h <RDS엔드포인트> -u admin -p
+mysql> create user 'admin'@'<RDS 엔드포인트>' identified by '<password>';
+mysql> GRANT ALL PRIVILEGES ON `user_db`.* TO 'admin'@'RDS 엔드포인트';
 mysql> FLUSH PRIVILEGES;
 mysql> SHOW DATABASES;
 mysql> USE user_db;
