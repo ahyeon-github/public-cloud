@@ -39,17 +39,3 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/public-cloud:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/public-cloud:latest
-
-      # Docker 이미지 실행 (선택 사항)
-      - name: Run Docker Container
-        run: |
-          docker run -p 8080:8080 \
-            -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
-            -e SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
-            -e SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \
-            -e SPRING_DATASOURCE_DRIVER_CLASS_NAME=${{ secrets.SPRING_DATASOURCE_DRIVER_CLASS_NAME }} \
-            -e SPRING_JPA_HIBERNATE_DDL_AUTO=${{ secrets.SPRING_JPA_HIBERNATE_DDL_AUTO }} \
-            -e SPRING_JPA_SHOW_SQL=${{ secrets.SPRING_JPA_SHOW_SQL }} \
-            -e SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=${{ secrets.SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL }} \
-            -e SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=${{ secrets.SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT }} \
-            ${{ secrets.DOCKERHUB_REPOSITORY }}
