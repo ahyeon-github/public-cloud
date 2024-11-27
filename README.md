@@ -1,4 +1,4 @@
-# public-cloud
+# public-cloud-Spring Boot(서버)
 
 ## 1.RDS 이용해서 외부에서 접근 가능한 데이터베이스 생성
 #### 생성한 데이터베이스에 user 정보를 저장할 수 있는 테이블을 만들고 3개의 샘플 데이터 추가
