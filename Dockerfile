@@ -1,15 +1,12 @@
-# 1. Base image
+# Dockerfile 수정
 FROM openjdk:17-jdk-slim
 
-# 2. Add a volume to hold logs
 VOLUME /tmp
 
-# 3. Copy application JAR
-ARG JAR_FILE=build/libs/Public-Cloud-0.0.1-SNAPSHOT-plain.jar
+# 실행 가능한 JAR 파일을 지정
+ARG JAR_FILE=build/libs/Public-Cloud-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 
-# 4. Expose port
 EXPOSE 8080
 
-# 5. Run the applicationdocker images
 ENTRYPOINT ["java", "-jar", "/app.jar"]
