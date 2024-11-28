@@ -58,9 +58,10 @@ Query OK, 3 rows affected (0.03 sec)
 	2.	Amazon ECS(Fargate)에 ECR 이미지를 배포.
 	3.	로드 밸런서를 통해 서비스 가용성 보장.
 
-![Uploading 스크린샷 2024-11-28 오후 1.14.37.png…]()
 
- 
+<img width="1527" alt="스크린샷 2024-11-28 오후 1 14 37" src="https://github.com/user-attachments/assets/e9fd0504-401f-4022-ba29-adc5e5615970">
+
+
 
 📂 레포지토리 구조
    ```
