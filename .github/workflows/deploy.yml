@@ -11,9 +11,13 @@ env:
   AWS_REGION: ap-northeast-2       # AWS 리전
   ECR_REPOSITORY: public-cloud     # ECR 리포지토리 이름
   AWS_ACCOUNT_ID: 615299736609     # AWS 계정 ID
+  CLUSTER_NAME: public-cloud-cluster   # ECS 클러스터 이름
+  SERVICE_NAME: public-cloud-service   # ECS 서비스 이름
+  CONTAINER_NAME: public-cloud-container # 컨테이너 이름
+  TASK_DEFINITION_FILE: ecs-task-def.json # 태스크 정의 파일 경로
 
 jobs:
-  build-and-deploy-to-ecr:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -59,3 +63,21 @@ jobs:
           
           # 푸시된 이미지 정보 출력
           echo "Image pushed to: $ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:$IMAGE_TAG"
+
+      # 7. ECS 태스크 정의 업데이트
+      - name: Update ECS Task Definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.TASK_DEFINITION_FILE }}
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:${{ github.sha }}
+
+      # 8. ECS 서비스에 태스크 배포
+      - name: Deploy Amazon ECS Task Definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.SERVICE_NAME }}
+          cluster: ${{ env.CLUSTER_NAME }}
+          wait-for-service-stability: true
