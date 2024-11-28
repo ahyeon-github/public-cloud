@@ -53,7 +53,27 @@ Query OK, 3 rows affected (0.03 sec)
    ```
 <img width="1441" alt="스크린샷 2024-11-27 오후 3 30 54" src="https://github.com/user-attachments/assets/e228f7f5-7be8-4827-a966-99314906bfbc">
 
+## 3.Spring Boot 애플리케이션: GitHub Actions로 ECR에서 ECS까지 배포 자동화
+	1.	Spring Boot 애플리케이션의 Docker 이미지 생성 및 Amazon ECR로 푸시.
+	2.	Amazon ECS(Fargate)에 ECR 이미지를 배포.
+	3.	로드 밸런서를 통해 서비스 가용성 보장.
 
+
+ 
+
+📂 레포지토리 구조
+   ```
+.
+├── src/
+├── build.gradle
+├── settings.gradle
+├── Dockerfile
+├── public-cloud-task-def.json
+└── .github/
+    └── workflows/
+        └── main.yml
+
+   ```
 
 <br>
 <br>
