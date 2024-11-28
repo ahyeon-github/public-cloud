@@ -14,7 +14,7 @@ env:
   CLUSTER_NAME: public-cloud-cluster   # ECS 클러스터 이름
   SERVICE_NAME: public-cloud-service   # ECS 서비스 이름
   CONTAINER_NAME: public-cloud-container # 컨테이너 이름
-  TASK_DEFINITION_FILE: ecs-task-def.json # 태스크 정의 파일 경로
+  TASK_DEFINITION_FILE: public-cloud-Task-revision1.json # 태스크 정의 파일 경로
 
 jobs:
   build-and-deploy:
